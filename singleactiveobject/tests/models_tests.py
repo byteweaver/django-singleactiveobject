@@ -3,7 +3,7 @@ from django.test import TestCase
 from singleactiveobject.tests.models import SingleActiveObject
 
 
-class ModelTestCase(TestCase):
+class SetupMixin(object):
     def setUp(self):
         self.objects = []
         for i in range(0,3):
@@ -11,6 +11,8 @@ class ModelTestCase(TestCase):
             obj.save()
             self.objects.append(obj)
 
+
+class ModelTestCase(SetupMixin, TestCase):
     def test_save(self):
         self.objects[0].active  = True
         self.objects[0].save()
