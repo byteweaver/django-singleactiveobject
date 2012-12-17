@@ -23,6 +23,7 @@ EXTERNAL_APPS = [
 INTERNAL_APPS = [
     'django_nose',
     'singleactiveobject',
+    'singleactiveobject.tests',
 ]
 INSTALLED_APPS = EXTERNAL_APPS + INTERNAL_APPS
 COVERAGE_MODULE_EXCLUDES = [
