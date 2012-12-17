@@ -30,3 +30,12 @@ class ModelTestCase(SetupMixin, TestCase):
         self.objects[0].active = True
         self.assertEqual(self.objects[0].get_state_string(), "active")
 
+
+class ManagerTestCase(SetupMixin, TestCase):
+    def test_get_active_object(self):
+        self.assertIsNone(SingleActiveObject.objects.get_active_object())
+
+        self.objects[1].active = True
+        self.objects[1].save()
+        self.assertEqual(SingleActiveObject.objects.get_active_object(), self.objects[1])
+
